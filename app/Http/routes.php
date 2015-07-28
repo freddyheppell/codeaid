@@ -11,7 +11,19 @@
 |
 */
 
+use App\Comment;
+use App\Language;
 use App\Snip;
+use App\Vote;
 
 Route::model('s', Snip::class);
 Route::resource('s', 'SnipController');
+
+Route::model('c', Comment::class);
+Route::resource('c', 'CommentController');
+
+Route::model('l', Language::class);
+Route::resource('l', 'LanguageController');
+
+Route::model('v', Vote::class);
+Route::resource('v', 'VoteController');

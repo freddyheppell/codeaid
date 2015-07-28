@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Snip;
+use App\Language;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SnipController extends Controller
+class LanguageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @internal param Request $request
+     * @return Response
      */
     public function index()
     {
-        return Snip::latest()->get();
+        //
     }
 
     /**
@@ -38,7 +38,7 @@ class SnipController extends Controller
      */
     public function store(Request $request)
     {
-        return Snip::create($request->all());
+        //
     }
 
     /**
@@ -47,9 +47,9 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(Snip $snip)
+    public function show(Language $language)
     {
-        return $snip;
+        //
     }
 
     /**
@@ -58,7 +58,7 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit(Snip $snip)
+    public function edit(Language $language)
     {
         //
     }
@@ -70,9 +70,9 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, Snip $snip)
+    public function update(Request $request, Language $language)
     {
-        $snip = $request->all();
+        //
     }
 
     /**
@@ -81,8 +81,8 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(Snip $snip)
+    public function destroy(Language $language)
     {
-        $snip->delete();
+        //
     }
 }

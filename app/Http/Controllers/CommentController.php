@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Snip;
+use App\Comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SnipController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @internal param Request $request
+     * @return Response
      */
     public function index()
     {
-        return Snip::latest()->get();
+        return Comment::latest()->get();
     }
 
     /**
@@ -38,7 +38,7 @@ class SnipController extends Controller
      */
     public function store(Request $request)
     {
-        return Snip::create($request->all());
+        return Comment::create($request->all());
     }
 
     /**
@@ -47,9 +47,9 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(Snip $snip)
+    public function show(Comment $comment)
     {
-        return $snip;
+        //
     }
 
     /**
@@ -58,7 +58,7 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit(Snip $snip)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -70,9 +70,9 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, Snip $snip)
+    public function update(Request $request, Comment $comment)
     {
-        $snip = $request->all();
+        $commment = $request->all();
     }
 
     /**
@@ -81,8 +81,8 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(Snip $snip)
+    public function destroy(Comment $comment)
     {
-        $snip->delete();
+        $comment->delete();
     }
 }
