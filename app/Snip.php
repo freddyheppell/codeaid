@@ -11,4 +11,11 @@ class Snip extends Model
       'language_id',
       'content'
     ];
+
+    public function getVoteByUser($user_id)
+    {
+        $vote = Vote::where('user_id', '=', $user_id)->get();
+
+        return $vote->type;
+    }
 }
