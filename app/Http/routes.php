@@ -11,5 +11,7 @@
 |
 */
 
+use App\Snip;
 
-Route::resource('snips', 'SnipController');
+Route::model('s', Snip::class);
+Route::resource('s', 'SnipController');
