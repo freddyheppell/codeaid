@@ -11,3 +11,5 @@
 |
 */
 
+
+Route::resource('snips', 'SnipController');
