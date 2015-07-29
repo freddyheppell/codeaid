@@ -36,7 +36,7 @@ class VoteController extends Controller
 
     public function getVote(Request $request)
     {
-        return Vote::where('snip_id', $request->snip_id)->where('user_id', user()->id);
+        return Vote::where('snip_id', $request->snip_id)->where('user_id', user()->id)->get();
     }
 
 }
