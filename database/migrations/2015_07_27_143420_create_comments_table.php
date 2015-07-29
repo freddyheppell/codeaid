@@ -17,13 +17,15 @@ class CreateCommentsTable extends Migration
 
             $table->text('content');
 
-            $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned();
 
-            $table->integer('snip_id');
-            $table->foreign('snip_id')->references('id')->on('snips');
+            $table->integer('snip_id')->unsigned();
 
             $table->timestamps();
+        });
+        Schema::table('comments',function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('snip_id')->references('id')->on('snips');
         });
     }
 

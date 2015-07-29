@@ -15,15 +15,18 @@ class CreateVotesTable extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned();
 
-            $table->integer('snip_id');
-            $table->foreign('snip_id')->references('id')->on('snips');
+            $table->integer('snip_id')->unsigned();
 
             $table->char('type', 1);
 
             $table->timestamps();
+        });
+
+        Schema::table('votes', function(Blueprint $table){
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('snip_id')->references('id')->on('snips');
         });
     }
 

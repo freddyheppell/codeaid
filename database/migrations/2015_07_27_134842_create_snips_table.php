@@ -18,15 +18,18 @@ class CreateSnipsTable extends Migration
             $table->string('name');
 
             $table->integer('language_id')->unsigned();
-            $table->foreign('language_id')->references('id')->on('languages');
 
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
 
             $table->text('content');
 
 
             $table->timestamps();
+        });
+        Schema::table('snips',function(Blueprint $table){
+            $table->foreign('language_id')->references('id')->on('languages');
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 
