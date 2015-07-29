@@ -6,3 +6,4 @@ Homestead.json
 .sqlite
 /.idea
 _ide_helper.php
+.phpstorm.meta.php
