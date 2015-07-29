@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\CreateCommentRequest;
+use App\Http\Requests\EditCommentRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -41,7 +43,7 @@ class CommentController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateCommentRequest $request)
     {
         return Comment::create($request->all());
     }
@@ -75,7 +77,7 @@ class CommentController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(EditCommentRequest $request, Comment $comment)
     {
         $commment = $request->all();
     }
