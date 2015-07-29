@@ -14,5 +14,6 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    Header set Access-Control-Allow-Origin "*"
 </IfModule>
+
+Header set Access-Control-Allow-Origin "*"
