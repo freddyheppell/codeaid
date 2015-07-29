@@ -14,7 +14,6 @@
 use App\Comment;
 use App\Language;
 use App\Snip;
-use App\Vote;
 
 Route::model('s', Snip::class);
 Route::resource('s', 'SnipController');
@@ -25,8 +24,9 @@ Route::resource('c', 'CommentController');
 Route::model('l', Language::class);
 Route::resource('l', 'LanguageController');
 
-Route::model('v', Vote::class);
-Route::resource('v', 'VoteController');
+Route::get('v/get', 'VoteController@getVote');
+Route::post('v/cast', 'VoteController@setVote');
+
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
