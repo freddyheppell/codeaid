@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSnipRequest;
 use App\Snip;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class SnipController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateSnipRequest $request)
     {
         return Snip::create($request->all());
     }
