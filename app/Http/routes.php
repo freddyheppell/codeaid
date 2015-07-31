@@ -11,22 +11,36 @@
 |
 */
 
-use App\Comment;
-use App\Language;
-use App\Snip;
 
-Route::model('s', Snip::class);
-Route::resource('s', 'SnipController');
+Route::model('snip', 'App\Snip');
+Route::model('comment', 'App\Comment');
+Route::model('language', 'App\Language');
 
-Route::model('c', Comment::class);
-Route::resource('c', 'CommentController');
+// Snips
+Route::get('/', 'SnipController@index');
+Route::get('/s/create', 'SnipController@create');
+Route::post('/s', 'SnipController@store');
+Route::get('/s/{snip}', 'SnipController@show');
+Route::get('/s/{snip}/edit', 'SnipController@edit');
+Route::put('/s/{snip}', 'SnipController@update');
+Route::delete('/s/{snip}', 'SnipController@destroy');
 
-Route::model('l', Language::class);
-Route::resource('l', 'LanguageController');
 
-Route::get('v/get', 'VoteController@getVote');
-Route::post('v/cast', 'VoteController@setVote');
+// Comments
+Route::post('/s/{snip}/comment/create', 'CommentController@store');
+Route::put('/s/{snip}/comment/{comment}', 'CommentController@update');
 
+// Languages
+Route::get('/l', 'LanguageController@index');
+Route::get('/l/create', 'LanguageController@create');
+Route::post('/l', 'LanguageController@store');
+Route::get('/l/{language}', 'LanguageController@show');
+Route::get('/l/{language}/edit', 'LanguageController@edit');
+Route::put('/l/{language}', 'LanguageController@update');
+Route::delete('/l/{language}', 'LanguageController@destroy');
+
+// Voting
+Route::get('/s/{snip}/like', 'VoteController@makeVote');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

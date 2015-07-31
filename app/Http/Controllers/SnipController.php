@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Http\Requests\CreateSnipRequest;
+use App\Language;
 use App\Snip;
+use App\Vote;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SnipController extends Controller
 {
@@ -23,7 +27,7 @@ class SnipController extends Controller
      */
     public function index()
     {
-        return Snip::latest()->get();
+        return view('index')->with(['snips' => Snip::latest()->get()]);
     }
 
     /**
@@ -33,7 +37,8 @@ class SnipController extends Controller
      */
     public function create()
     {
-        //
+        $languages = Language::all();
+        return view('new')->with(['languages' => $languages]);
     }
 
     /**
@@ -44,18 +49,32 @@ class SnipController extends Controller
      */
     public function store(CreateSnipRequest $request)
     {
-        return Snip::create($request->all());
+        $snip = new Snip;
+        $snip->name = $request->name;
+        $snip->content = $request->comment;
+        $snip->language_id = $request->language_id;
+        $snip->user_id = user()->id;
+        $snip->save();
+
+        return redirect(action('SnipController@show', $snip->id));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return Response
+     * @internal param int $id
      */
     public function show(Snip $snip)
     {
-        return $snip;
+        $vote_count = count(Vote::where('snip_id', $snip->id)->get());
+        if (Auth::check()) {
+            $user_vote = Vote::where('snip_id', $snip->id)->where('user_id', user()->id)->first();
+        }else{
+            $user_vote = null;
+        }
+        $snip->load('comments');
+        return view('snip', compact('snip', 'vote_count', 'user_vote'));
     }
 
     /**

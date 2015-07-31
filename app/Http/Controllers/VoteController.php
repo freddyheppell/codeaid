@@ -13,30 +13,35 @@ use App\Http\Controllers\Controller;
 class VoteController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function setVote(VoteRequest $request)
+    public function makeVote(Snip $snip,Request $request)
     {
-        $vote = Vote::where('snip_id', $request->snip_id)->where('user_id', user()->id)->first();
+        $current_vote = Vote::where('snip_id', $snip->id)->where('user_id', user()->id)->first();
 
-        if (!$vote){
-            $vote->type = $request->type;
+        if (!$current_vote){
+            $vote = new Vote();
+            $vote->type = '+';
+            $vote->snip_id = $snip->id;
+            $vote->user_id = user()->id;
             $vote->save();
-            return $vote;
         }else{
-            $vote = Vote::create($request->all() . ['user_id' => user()->id]);
-            return $vote;
+            $current_vote->delete();
         }
 
-    }
+        $snip->pushToIndex();
 
-    public function getVote(Request $request)
-    {
-        return Vote::where('snip_id', $request->snip_id)->where('user_id', user()->id)->get();
+        return redirect(action('SnipController@show', $snip->id));
+
     }
 
 }

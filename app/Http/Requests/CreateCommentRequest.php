@@ -12,7 +12,7 @@ class CreateCommentRequest extends Request
      *
      * @return bool
      */
-    public function authorize(Request $request)
+    public function authorize()
     {
         return true;
     }
@@ -25,7 +25,7 @@ class CreateCommentRequest extends Request
     public function rules()
     {
         return [
-            'content' => 'required',
+            'comment' => 'required',
             'snip_id' => 'exists:snip,id'
         ];
     }

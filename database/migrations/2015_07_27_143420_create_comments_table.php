@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
 
             $table->integer('user_id')->unsigned();
 
-            $table->integer('snip_id')->unsigned();
+            $table->integer('snip_id')->unsigned()->onDelete('cascade');
 
             $table->timestamps();
         });

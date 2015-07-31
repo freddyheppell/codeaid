@@ -1,8 +1,8 @@
 <!doctype html>
 <head>
     <title>Login</title>
-    <link href="/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/auth.css" rel="stylesheet"/>
+    <link href="https://djyhxgczejc94.cloudfront.net/frameworks/bootstrap/3.0.0/themes/white-plum/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/auth.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">

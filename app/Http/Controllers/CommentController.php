@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Http\Requests\CreateCommentRequest;
 use App\Http\Requests\EditCommentRequest;
+use App\Snip;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,58 +18,27 @@ class CommentController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        return Comment::latest()->get();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param CreateCommentRequest|Request $request
+     * @param Snip $snip
      * @return Response
      */
-    public function store(CreateCommentRequest $request)
+    public function store(CreateCommentRequest $request, Snip $snip)
     {
-        return Comment::create($request->all());
+        $comment = new Comment();
+        $comment->user_id = user()->id;
+        $comment->content = $request->comment;
+        $comment->snip_id = $snip->id;
+        $comment->save();
+
+        $snip->pushToIndex();
+
+        return redirect(action('SnipController@show', $snip->id));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -77,19 +47,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(EditCommentRequest $request, Comment $comment)
+    public function update(EditCommentRequest $request, Comment $comment, Snip $snip)
     {
-        $commment = $request->all();
+        $comment = $request->all();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy(Comment $comment)
-    {
-        $comment->delete();
-    }
 }

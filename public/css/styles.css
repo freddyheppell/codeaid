@@ -1,0 +1,150 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 100%;
+}
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header, .marketing, .footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+/* Customize container */
+@media(min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 25px;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and(min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header, .marketing, .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+  
+}
+/* The main question */
+.question {
+  padding-bottom: 20px;
+}
+
+.search-form {
+  border-radius: 30px;
+}
+
+.snip-title {
+  padding-left: 20px;
+}
+
+.snip-body {
+  padding-left: 20px;
+}
+
+.snip-ratings {
+  padding-left: 20px;
+}
+
+pre {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#editor { 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 92%;
+  margin: 20px 20px 20px 20px;
+  height: 400px;
+}
+
+#editorHolder {
+  margin: 0px 20px 20px 20px;
+}
+
+#preferencesEditor {
+  margin: 20px 20px 20px 20px;
+  padding-bottom: 20px;
+}
+
+#textentry {
+  padding-top: 20px;
+}
+
+.snip-title-create {
+  padding-left: 20px;
+}
+
+#snip {
+  margin: 0px 0px 20px 20px;
+}
+
+.large-navbar {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.cool-comments-title {
+  margin-left: 15px;
+}
+
+#helpbtn {
+  margin: 15px 10px 10px 10px;
+}
+
+#new-snip-navbar {
+  margin: 15px 10px 10px 10px;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}

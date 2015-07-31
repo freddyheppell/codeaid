@@ -25,7 +25,7 @@ class CreateSnipRequest extends Request
     {
         return [
             'name' => 'required',
-            'content' => 'required'
+            'comment' => 'required'
         ];
     }
 }
