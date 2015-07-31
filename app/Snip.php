@@ -26,6 +26,8 @@ class Snip extends Model
         ],
     ];
 
+    public $indices = ['snipdev'];
+
     protected $fillable = [
       'name',
       'language_id',

@@ -24,7 +24,6 @@ var helper = algoliasearchHelper(algolia, INDEX_NAME, params);
 
 
 function renderHits(content) {
-    console.log('rendering');
     var hitsHtml = '';
     for (var i = 0; i < content.hits.length; ++i) {
         snip = content.hits[i];
@@ -37,7 +36,6 @@ function renderHits(content) {
 
 
 helper.on('result', function(content, state) {
-    console.log('helper');
     renderHits(content);
 });
 
@@ -45,7 +43,6 @@ $inputField
     .on('keyup', function() {
         var query = $inputField.val();
         helper.setQuery(query).search();
-        console.log('keyup');
     })
     .focus();
 
