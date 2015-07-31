@@ -18,7 +18,8 @@ class Snip extends Model
             'language' => [
                 'name',
                 'description'
-            ]
+            ],
+            'slug'
         ],
         'customRanking' => [
             'desc(likeCount)',

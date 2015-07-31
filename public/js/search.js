@@ -27,11 +27,12 @@ function renderHits(content) {
     console.log('rendering');
     var hitsHtml = '';
     for (var i = 0; i < content.hits.length; ++i) {
-        console.log(content.hits[i]);
-        hitsHtml += hitTemplate.render(content.hits[i]);
+        snip = content.hits[i];
+        hitsHtml += addSnip(snip['name'], snip['content'], snip['id'], snip['language']['slug'], snip['owner'], snip['likeCount'], snip['commentCount'])
     }
     if (content.hits.length === 0) hitsHtml = '<p id="no-hits"><b>Oh Snip!</b> We couldn\'t find any snips, <a href="/s/create">why not create one?</a></p>';
     $hits.html(hitsHtml);
+    highlighting();
 }
 
 
