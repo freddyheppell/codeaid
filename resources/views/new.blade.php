@@ -19,7 +19,6 @@
 		  <a class="navbar-brand" href="/"><img alt="CodeAid" src="/img/logo3.png" height="50px"></a>
 		</div>
 		<div class="navbar-right">
-		  <a id="accounts"></a>
 		  <a class="navbar-brand btn btn-default" id="new-snip-navbar"href="/s/create">New Snip <i class="fa fa-file-code-o"></i></a>
 		</div>
 	  </div>
@@ -79,20 +78,6 @@
 	  var editor = ace.edit("editor");
 	  var language = "Python";
 
-	  var isLoggedIn = function() {
-		$.getJSON("http://api.codeaid.xyz/auth/status", function (d) {
-		  var isthere = false;
-		  var name = "";
-		  $.each(d,function(k,v) {
-			if(k == "id") isthere = true;
-			if(k == "name") name = v;
-		  });
-		  if(isthere) {
-			$("#accounts").html('<a class="navbar-brand btn btn-default" id="new-snip-navbar" href="http://api.codeaid.xyz/auth/logout">Log Out ('+name+') <i class="fa fa-user"></i></a>');
-		  }
-		});
-		$("#accounts").html('<a class="navbar-brand btn btn-default" id="new-snip-navbar" href="http://api.codeaid.xyz/auth/login">Log In/Sign Up <i class="fa fa-user"></i></a>');
-	  };
 
 	  $(document).ready(function () {
 		$("#editor").height($(window).height()-300);
