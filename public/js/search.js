@@ -28,7 +28,7 @@ function renderHits(content) {
     var hitsHtml = '';
     for (var i = 0; i < content.hits.length; ++i) {
         snip = content.hits[i];
-        hitsHtml += addSnip(snip['name'], snip['content'], snip['id'], snip['language']['slug'], snip['owner'], snip['likeCount'], snip['commentCount'])
+        hitsHtml += addSnip(snip['name'], snip['language']['name'], snip['content'], snip['id'], snip['language']['slug'], snip['owner'], snip['likeCount'], snip['commentCount'])
     }
     if (content.hits.length === 0) hitsHtml = '<p id="no-hits"><b>Oh Snip!</b> We couldn\'t find any snips, <a href="/s/create">why not create one?</a></p>';
     $hits.html(hitsHtml);
