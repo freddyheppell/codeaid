@@ -23,6 +23,7 @@ var params = {
 var helper = algoliasearchHelper(algolia, INDEX_NAME, params);
 
 
+
 function renderHits(content) {
     var hitsHtml = '';
     for (var i = 0; i < content.hits.length; ++i) {
